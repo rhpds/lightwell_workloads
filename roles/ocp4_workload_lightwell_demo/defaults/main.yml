@@ -6,8 +6,12 @@ ocp4_workload_lightwell_demo_namespace: lightwell-demo
 # Name used for the Deployment, Service and Route.
 ocp4_workload_lightwell_demo_name: lightwell-demo
 
-# Full image reference (repo:tag), equivalent to `podman run <image>`.
-ocp4_workload_lightwell_demo_image: quay.io/rhpds/lightwell-demo-all-in-one:latest
+# Image repository, equivalent to `podman run <repository>:<tag>`.
+ocp4_workload_lightwell_demo_image_repository: quay.io/rhpds/lightwell-demo-all-in-one
+
+# Image tag. Pin to a specific semantic version for production; "latest" is
+# fine for dev/testing.
+ocp4_workload_lightwell_demo_image_tag: latest
 
 # Port the container listens on, equivalent to `podman run -p <port>:<port>`.
 ocp4_workload_lightwell_demo_container_port: 8080

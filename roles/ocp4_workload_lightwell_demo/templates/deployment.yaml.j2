@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: {{ ocp4_workload_lightwell_demo_name }}
-        image: {{ ocp4_workload_lightwell_demo_image }}
+        image: {{ ocp4_workload_lightwell_demo_image_repository }}:{{ ocp4_workload_lightwell_demo_image_tag }}
         ports:
         - name: http
           containerPort: {{ ocp4_workload_lightwell_demo_container_port }}
