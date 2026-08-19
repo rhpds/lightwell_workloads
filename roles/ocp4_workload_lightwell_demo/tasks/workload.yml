@@ -28,3 +28,27 @@
     wait: true
     wait_sleep: 10
     wait_timeout: 360
+
+- name: Get Route for the Lightwell demo pod
+  when: ocp4_workload_lightwell_demo_expose_route | bool
+  kubernetes.core.k8s_info:
+    api_version: route.openshift.io/v1
+    kind: Route
+    name: "{{ ocp4_workload_lightwell_demo_name }}"
+    namespace: "{{ ocp4_workload_lightwell_demo_namespace }}"
+  register: r_lightwell_demo_route
+  retries: 30
+  delay: 5
+  until:
+  - r_lightwell_demo_route.resources is defined
+  - r_lightwell_demo_route.resources | length > 0
+  - r_lightwell_demo_route.resources[0].spec.host is defined
+
+# {name}-{namespace} is not published as a variable anywhere the info
+# message template can see, so publish the real Route host explicitly
+# rather than have the template try to reconstruct it.
+- name: Publish Lightwell demo URL for the user
+  when: ocp4_workload_lightwell_demo_expose_route | bool
+  agnosticd.core.agnosticd_user_info:
+    data:
+      lightwell_demo_url: "https://{{ r_lightwell_demo_route.resources[0].spec.host }}"
