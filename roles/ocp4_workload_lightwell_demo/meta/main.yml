@@ -1,0 +1,14 @@
+---
+galaxy_info:
+  role_name: ocp4_workload_lightwell_demo
+  author: Red Hat, Tony Kay (ankay@redhat.com)
+  description: |
+    Deploy the Lightwell all-in-one demo application as a single pod,
+    exposed via an OpenShift Route.
+  license: MIT
+  min_ansible_version: "2.9"
+  platforms: []
+  galaxy_tags:
+  - ocp
+  - openshift
+dependencies: []

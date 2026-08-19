@@ -1,0 +1,21 @@
+---
+# Namespace the demo pod is deployed into.
+# Set by the catalog item — normally an existing tenant namespace.
+ocp4_workload_lightwell_demo_namespace: lightwell-demo
+
+# Name used for the Deployment, Service and Route.
+ocp4_workload_lightwell_demo_name: lightwell-demo
+
+# Full image reference (repo:tag), equivalent to `podman run <image>`.
+ocp4_workload_lightwell_demo_image: quay.io/rhpds/lightwell-demo-all-in-one:latest
+
+# Port the container listens on, equivalent to `podman run -p <port>:<port>`.
+ocp4_workload_lightwell_demo_container_port: 8080
+
+# Create a Route exposing the pod externally.
+ocp4_workload_lightwell_demo_expose_route: true
+
+ocp4_workload_lightwell_demo_requests_cpu: 250m
+ocp4_workload_lightwell_demo_requests_memory: 256Mi
+ocp4_workload_lightwell_demo_limits_cpu: "1"
+ocp4_workload_lightwell_demo_limits_memory: 1Gi

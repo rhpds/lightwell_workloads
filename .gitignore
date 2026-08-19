@@ -1,0 +1,15 @@
+__pycache__
+.ansible
+.ansible_facts
+.DS_Store
+.idea
+.pre-commit-config.yaml
+.tox
+.vscode
+*-user-data.yaml
+*-user-info.yaml
+*.pyc
+*.rc
+*.retry
+*.swp
+*.vscode

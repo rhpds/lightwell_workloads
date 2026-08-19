@@ -1,0 +1,29 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ ocp4_workload_lightwell_demo_name }}
+  namespace: {{ ocp4_workload_lightwell_demo_namespace }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ ocp4_workload_lightwell_demo_name }}
+  template:
+    metadata:
+      labels:
+        app: {{ ocp4_workload_lightwell_demo_name }}
+    spec:
+      containers:
+      - name: {{ ocp4_workload_lightwell_demo_name }}
+        image: {{ ocp4_workload_lightwell_demo_image }}
+        ports:
+        - name: http
+          containerPort: {{ ocp4_workload_lightwell_demo_container_port }}
+        resources:
+          requests:
+            cpu: "{{ ocp4_workload_lightwell_demo_requests_cpu }}"
+            memory: "{{ ocp4_workload_lightwell_demo_requests_memory }}"
+          limits:
+            cpu: "{{ ocp4_workload_lightwell_demo_limits_cpu }}"
+            memory: "{{ ocp4_workload_lightwell_demo_limits_memory }}"

@@ -1,0 +1,15 @@
+= ocp4_workload_lightwell_demo - Deploy the Lightwell all-in-one demo pod
+
+Deploys the Lightwell all-in-one demo application as a single pod, exposed via an OpenShift Route.
+
+Equivalent of:
+
+[source,bash]
+----
+podman run -d --name lightwell-demo -p 8080:8080 \
+  quay.io/rhpds/lightwell-demo-all-in-one:latest
+----
+
+Assumes `ocp4_workload_lightwell_demo_namespace` already exists (e.g. created by a tenant-namespace role that runs earlier in the workload list).
+
+See defaults/main.yml for variables to set.

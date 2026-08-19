@@ -1,0 +1,17 @@
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: {{ ocp4_workload_lightwell_demo_name }}
+  namespace: {{ ocp4_workload_lightwell_demo_namespace }}
+spec:
+  port:
+    targetPort: {{ ocp4_workload_lightwell_demo_container_port }}
+  to:
+    kind: Service
+    name: {{ ocp4_workload_lightwell_demo_name }}
+    weight: 100
+  wildcardPolicy: None
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge

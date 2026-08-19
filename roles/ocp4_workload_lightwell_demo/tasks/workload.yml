@@ -1,0 +1,30 @@
+---
+# -------------------------------------------------------------------------
+# Equivalent of:
+#   podman run -d --name lightwell-demo -p 8080:8080 \
+#     quay.io/rhpds/lightwell-demo-all-in-one:latest
+# -------------------------------------------------------------------------
+
+- name: Create Deployment and Service for the Lightwell demo pod
+  kubernetes.core.k8s:
+    state: present
+    template: "{{ item }}"
+  loop:
+  - deployment.yaml.j2
+  - service.yaml.j2
+
+- name: Create Route for the Lightwell demo pod
+  when: ocp4_workload_lightwell_demo_expose_route | bool
+  kubernetes.core.k8s:
+    state: present
+    template: route.yaml.j2
+
+- name: Wait until the Lightwell demo Deployment is running
+  kubernetes.core.k8s_info:
+    api_version: apps/v1
+    kind: Deployment
+    name: "{{ ocp4_workload_lightwell_demo_name }}"
+    namespace: "{{ ocp4_workload_lightwell_demo_namespace }}"
+    wait: true
+    wait_sleep: 10
+    wait_timeout: 360

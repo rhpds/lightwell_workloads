@@ -1,0 +1,23 @@
+#SPDX-License-Identifier: MIT-0
+namespace: rhpds
+name: lightwell_workloads
+version: 1.0.0
+readme: README.md
+authors:
+- Tony Kay <ankay@redhat.com>
+
+description: Workloads for deploying the Red Hat Lightwell demos on AgnosticD(-v2)
+license:
+- GPL-2.0-or-later
+license_file: ''
+tags:
+- cloud
+
+dependencies: {}
+
+repository: https://github.com/rhpds/lightwell_workloads
+documentation: https://github.com/rhpds/lightwell_workloads
+homepage: https://github.com/rhpds/lightwell_workloads
+issues: https://github.com/rhpds/lightwell_workloads/issues
+
+build_ignore: []
